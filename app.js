@@ -86,19 +86,19 @@ client.on('message', (msg) => {
         }
     }
     if(command === "setchannels"){
-        if(oldChannel === "" && newChannel === ""){
-            voiceChannelList.map(item => {
-                if(item.name == args[0]){
-                    oldChannel = item.id
-                }
-                if(item.name == args[1]){
-                    newChannel = item.id
-                }
-            })
-        }
+        voiceChannelList.map(item => {
+            if(item.name == args[0]){
+                oldChannel = item.id
+            }
+            if(item.name == args[1]){
+                newChannel = item.id
+            }
+        })
+        textChannel.send(`channels changed, ${oldChannel} -> ${newChannel}`)
     }
     if(command === "settime"){
         moveTime = args[0]
+        textChannel.send(`Time changed ${moveTime}`)
     }
     if(command === "settings"){
         textChannel.send(`${oldChannel} -> ${newChannel}`)
