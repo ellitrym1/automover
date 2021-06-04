@@ -46,7 +46,7 @@ client.on('ready', () => {
         }
 
         
-    }, 5000)
+    }, 15 * 60 * 1000)
     
 })
 
@@ -71,7 +71,6 @@ client.on('message', (msg) => {
                 })
                 msg.channel.send(`${channel.name} - ${channel.id}`)
             }
-            console.log(voiceChannelList)
         }
         if(args[0] === "text" && textChannelList[0] == null){
             const channels = client.channels.cache.filter(c => {
@@ -84,12 +83,10 @@ client.on('message', (msg) => {
                 })
                 msg.channel.send(`${channel.name} - ${channel.id}`)
             }
-            console.log(textChannelList)
         }
     }
     if(command === "setchannels"){
         if(oldChannel === "" && newChannel === ""){
-            console.log(args)
             voiceChannelList.map(item => {
                 if(item.name == args[0]){
                     oldChannel = item.id
@@ -98,18 +95,14 @@ client.on('message', (msg) => {
                     newChannel = item.id
                 }
             })
-            console.log(oldChannel + " " + newChannel)
         }
     }
     if(command === "settime"){
-        console.log(args[0])
         moveTime = args[0]
-
-
     }
     if(command === "settings"){
         textChannel.send(`${oldChannel} -> ${newChannel}`)
-        textChannel.send(`${moveTime}`)
+        textChannel.send(`${moveTimeHour} : ${moveTimeMinute}`)
     }
 })
 
