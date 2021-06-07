@@ -30,7 +30,7 @@ client.on('ready', () => {
 
         let date = new Date()
         
-        if(date.getHours() == 12 && date.getMinutes() >= 00){
+        if(date.getUTCHours() == 11 && date.getMinutes() >= 00){
             for (const [channelId, channel] of channels){
                 for(const [memberId, member] of channel.members){
                     member.voice.setChannel("690909536671891457")
@@ -39,7 +39,7 @@ client.on('ready', () => {
             }
         }
 
-    }, 10 * 60 * 1000)
+    }, 10000)
     
 })
 
